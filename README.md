@@ -1,0 +1,2 @@
+# LearningJS
+Example of JavaScript
