@@ -1,19 +1,18 @@
 ﻿<script language="JavaScript" type="text/javascript">
-//объявляем переменные
 var base = 60; 
 var clocktimer,dateObj,dh,dm,ds,ms; 
 var readout=''; 
 var h=1, m=1, tm=1,s=0,ts=0,ms=0,show=true, init=0, ii=0; 
-//функция для очистки поля
+//function clear field
 function clearСlock() { 
 	clearTimeout(clocktimer); 
 	h=1;m=1;tm=1;s=0;ts=0;ms=0; 
 	init=0;show=true; 
 	readout='00:00:00.00'; 
-	document.TestForm.stopwatch.value=readout; 
+	document.TimerForm.stopwatch.value=readout; 
 	ii = 0; 
 } 
-//функция для старта секундомера
+//function start timer
 function startTIME() { 
 	var cdateObj = new Date(); 
 	var t = (cdateObj.getTime() - dateObj.getTime())-(s*1000); 
@@ -42,10 +41,10 @@ function startTIME() {
 	dh=h-1; 
 	if (dh>0) { if (dh<10) { dh = '0'+dh; }} else { dh = '00'; } 
 	readout = dh + ':' + dm + ':' + ds + '.' + ms; 
-	if (show==true) { document.TestForm.stopwatch.value = readout; } 
+	if (show==true) { document.TimerForm.stopwatch.value = readout; } 
 	clocktimer = setTimeout("startTIME()",1); 
 } 
-//функция для паузы
+//function for pause
 function pause() { 
 	if (init==0) { dateObj = new Date(); 
 	startTIME(); 
@@ -55,9 +54,9 @@ function pause() {
 	} else { show=true; } } 
 } 
 </script> 
-<!--Форма для Секундомера-->
-<form name=TestForm>   
-	<input type=button value="Обнулить" onclick="clearСlock()">  
+<!--Timer Form-->
+<form name=TimerForm>   
+	<input type=button value="Reset" onclick="clearСlock()">  
 	<input name=stopwatch size=10 value="00:00:00.00">  
-	<input type=button value="Запуск/Стоп" onclick="pause()"> 
+	<input type=button value="On/Pause" onclick="pause()"> 
 </form>
