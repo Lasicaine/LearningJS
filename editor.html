@@ -1,0 +1,19 @@
+<HTML>
+<H3>Редактор кодов JavaScript</H3>
+Код:<br>
+<TEXTAREA id="mycode" ROWS=20 COLS=60></TEXTAREA>
+<p>Результат:<br>
+<TEXTAREA id="myrezult" ROWS=3 COLS=60></TEXTAREA>
+<P>
+<BUTTON onclick="document.all.myrezult.value=eval( mycode.value)">
+Выполнить</BUTTON>
+<BUTTON onclick="document.all.mycode.value='';
+document.all.myrezult.value=''">
+Очистить</BUTTON>
+<P>
+<! Комментарий >
+Введите выражения в верхнее поле.
+Выражения разделяются точкой с запятой.
+Можно также писать каждое выражение в отдельной строке.
+Чтобы закончить одну строку и перейти к другой, нажмите клавишу Enter.
+</HTML>
