@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>CompareLists</title>
+<style type="text/css">
+	header {
+	  margin: 20px;
+	  padding: 20px;
+	  background: #424242;      
+	  text-align: center;
+	}	
+	body {
+	  background: #2E2E2E;
+	  font-family: GillSans, Calibri, Trebuchet, sans-serif;
+	  color: #ffffff;
+	}
+	textarea {
+	  word-wrap: normal;
+	  min-height: 450px;
+	  min-width: 100%;
+	  background-color: #585858;
+	  color: white;
+	}
+	.paneloptions{
+	  margin: 8px;
+	}
+	.layout{
+	 overflow: hidden;	
+	}
+	#firstpanel {
+	  float: left;
+	  margin-left: 1%;
+	  width: 49%;
+	}
+	#twopanel { 
+	  margin-right: 1%;
+	  margin-left: 52%;
+	}
+	#advantages { 
+	  margin: 5px;
+	  padding: 10px;
+	  background: #0B6121;      
+	  text-align: center;
+	}
+	#minuses { 
+	  margin: 5px;
+	  padding: 10px;
+	  background: #610B21;      
+	  text-align: center;
+	}
+</style>
+<script>
+    function cleartxtarea(i){
+	switch (i) {
+	case 1:        
+	document.getElementById('firsttxtarea').value=""
+	break
+	case 2:
+	document.getElementById('twotxtarea').value=""
+	break
+	};
+    };
+    </script>
+</head>
+  <header>
+    <h1>Compare Lists</h1>
+  </header>
+<body>
+<div class="layout">
+    <div id="firstpanel">
+    <div id="advantages"><h3>Advantages</h3></div>
+    <input class="paneloptions" type="button" value="Clear Lists" onclick="cleartxtarea(1)" />
+    <form name="FirstLists" id="firstlists"> 
+    <textarea id="firsttxtarea">
+    </textarea>
+    </form>
+    </div> 
+    <div id="twopanel">
+    <div id="minuses"><h3>Minuses</h3></div>
+    <input class="paneloptions" type="button" value="Clear Lists" onclick="cleartxtarea(2)" />
+    <form name="TwoLists" id="twolists"> 
+    <textarea id="twotxtarea">
+    </textarea>
+    </form>
+    </div>
+</div>
+</body>
+</html>
