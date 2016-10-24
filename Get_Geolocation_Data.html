@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Get Geolocation Data</title>
+    <script>
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                $("#data").html("latitude: " + position.coords.latitude + "<br>longitude: " + position.coords.longitude);
+            });
+        }
+    </script>
+</head>
+<header>
+    <h1>Get Geolocation Data</h1>
+</header>
+
+<body>
+    <div id="data">
+        <h4>You are here:</h4>
+    </dS
+</body>
+
+</html>
