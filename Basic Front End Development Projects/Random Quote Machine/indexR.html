@@ -4,8 +4,14 @@
 <head>
     <meta charset="utf-8">
     <title>Random Quote Generator</title>
-    <link rel="stylesheet" href="http://cdn.jsdelivr.net/zurb/foundation-apps-1.1.0.min.css">
-    <style>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.css">
+	<style>
+	    @import 'https://fonts.googleapis.com/css?family=Ubuntu';
+
+        body,
+        h1 {
+            font-family: 'Ubuntu', sans-serif;
+        }
 
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -16,15 +22,34 @@
 </head>
 
 <body>
-    <div class="grid-block">
-        <div id="tabs" class="grid-block shrink">
-            <ul class="button-group">
-                <li><a href="#">Button A</a></li>
-                <li><a href="#">Button B</a></li>
-            </ul>
+	<div class="row">
+		<div class="small-6 large-centered columns">
+		<h1>Random Quote Machine</h1>
+		</div>
+	</div>
+    <div class="row">
+	  	<div class="grid-block">
+			<div class="expanded button-group">
+		  		<a class="button">Load New!</a>
+		  		<a class="button">Tweet this quote!</a>
+			</div>
+    	</div>
+	</div>
+	<div class="row">
+		<div class="small-6 large-centered columns">
+	  		<blockquote class="text-right">
+  				Those people who think they know everything are a great annoyance to those of us who do.
+  			<cite>Isaac Asimov</cite>
+			</blockquote>
+		</div>
+	</div>
+    <div class="row">
+        <hr>
+        <div class="medium-6 columns">
+            <h6 class="text-left subheader">Project for Free Code Camp</h6>
         </div>
-        <div id="main" class="grid-block">
-
+        <div class="medium-6 columns">
+            <h6 class="text-right subheader"><a href="https://www.freecodecamp.com/suomaa" target="_blank">Alex Antomonov</a></h6>
         </div>
     </div>
 </body>
