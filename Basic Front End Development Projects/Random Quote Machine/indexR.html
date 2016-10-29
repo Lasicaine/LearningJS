@@ -4,54 +4,82 @@
 <head>
     <meta charset="utf-8">
     <title>Random Quote Generator</title>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.css">
-	<style>
-	    @import 'https://fonts.googleapis.com/css?family=Ubuntu';
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.css">
+    <style>
+        @import 'https://fonts.googleapis.com/css?family=Ubuntu';
+        @import 'https://fonts.googleapis.com/css?family=Dancing+Script';
         body,
         h1 {
             font-family: 'Ubuntu', sans-serif;
         }
-
+        
+        hr {
+            max-width: 100%;
+        }
+        
+        .row {
+            margin: 0 0 0 0;
+            max-width: 100%;
+        }
+        
+        .size-quote {
+            font-size: 24px;
+        }
+        
+        .blockq {
+            font-family: 'Dancing Script', cursive;
+            font-size: 30px;
+        }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!--<script src="https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.js"></script>-->
     <script>
-        //... for JQuery code
+        $(function() {
+                    var $quote = $("blockquote");
+                    var $quoteText = $("blockquote p");
+                    var $quoteAuthor = $("blockquote footer");
+                    var $btnTweet = $("#btnTweet");
+                    var $btnLoad = $("#btnRefresh");
+
+                    function newTweetUrl(quote) {
+                        return "//twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=" + encodeURIComponent("'" + quote.content + "' " + quote.title);
+                    }
     </script>
 
 </head>
 
 <body>
-	<div class="row">
-		<div class="small-6 large-centered columns">
-		<h1>Random Quote Machine</h1>
-		</div>
-	</div>
     <div class="row">
-	  	<div class="grid-block">
-			<div class="expanded button-group">
-		  		<a class="button">Load New!</a>
-		  		<a class="button">Tweet this quote!</a>
-			</div>
-    	</div>
-	</div>
-	<div class="row">
-		<div class="small-6 large-centered columns">
-	  		<blockquote class="text-right">
-  				Those people who think they know everything are a great annoyance to those of us who do.
-  			<cite>Isaac Asimov</cite>
-			</blockquote>
-		</div>
-	</div>
+        <div class="small-6 large-centered columns">
+            <h1>Random Quote Machine</h1>
+        </div>
+    </div>
     <div class="row">
-        <hr>
+        <div class="grid-block">
+            <div class="expanded button-group">
+                <a id="btnLoad" class="button">Load New!</a>
+                <a id="btnTweet" class="button" target="_blank" href="#">Tweet this quote!</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-6 large-centered columns">
+            <blockquote class="text-right blockq">
+                <p> asdasdasd</p>
+                <cite class="size-quote">sdvsdv</cite>
+            </blockquote>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
         <div class="medium-6 columns">
             <h6 class="text-left subheader">Project for Free Code Camp</h6>
         </div>
         <div class="medium-6 columns">
-            <h6 class="text-right subheader"><a href="https://www.freecodecamp.com/suomaa" target="_blank">Alex Antomonov</a></h6>
+            <h6 class="text-right subheader">2016&nbsp;(c)&nbsp;<a href="https://www.freecodecamp.com/suomaa" target="_blank">Alex Antomonov</a></h6>
         </div>
     </div>
+    <hr>
 </body>
 
 </html>
