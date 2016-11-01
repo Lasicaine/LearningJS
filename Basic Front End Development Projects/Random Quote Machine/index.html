@@ -23,7 +23,11 @@
             max-width: 100%;
         }
         
-        .size-quote {
+        .row-quote {
+            min-height: 300px;
+        }
+        
+        .cite-size {
             font-size: 24px;
         }
         
@@ -32,6 +36,7 @@
             font-size: 30px;
             margin: 0 25%;
             border-left: none;
+            display: none;
         }
         
         .material-icons {
@@ -51,6 +56,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script>
         $(function() {
+            var $quote = $("blockquote");
             var $text = $("blockquote p");
             var $author = $("blockquote cite");
             var $btnLoad = $("#btnLoad");
@@ -65,17 +71,23 @@
             }
 
             function loadQuote() {
-                var urlQuote = "http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=jsonp&jsonp=?"
+                var urlQuote = "http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=jsonp&jsonp=?";
 
                 $.getJSON(urlQuote, function(data) {
-                    $text.html(data.quoteText);
-                    if (data.quoteAuthor) {
-                        $author.html(data.quoteAuthor);
-                    } else {
-                        $author.html("Anonymos");
-                    }
-                    var urlTweet = newTweetUrl(data);
-                    $btnTweet.attr("href", urlTweet);
+                    $quote.fadeOut(700, function() {
+                        var self = this;
+                        $text.html(data.quoteText);
+                        if (data.quoteAuthor) {
+                            $author.html(data.quoteAuthor);
+                        } else {
+                            $author.html("Anonymous");
+                        }
+                        var urlTweet = newTweetUrl(data);
+                        $btnTweet.attr("href", urlTweet);
+                        $(self).fadeIn(700);
+                    });
+                }, function() {
+                    console.log("Get JSON error.");
                 });
             }
         });
@@ -95,10 +107,10 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row row-quote">
         <blockquote class="text-right blockq">
             <p class="text-center"></p>
-            <cite class="size-quote"></cite>
+            <cite class="cite-size"></cite>
         </blockquote>
     </div>
     <hr>
