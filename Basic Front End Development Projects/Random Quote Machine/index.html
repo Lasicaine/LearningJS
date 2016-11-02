@@ -12,6 +12,7 @@
         body,
         h1 {
             font-family: 'Ubuntu', sans-serif;
+            min-width: 350px;
         }
         
         hr {
@@ -66,6 +67,10 @@
 
             $btnLoad.click(loadQuote);
 
+            $btnTweet.click(function() {
+                $btnTweet.blur();
+            });
+
             function newTweetUrl(data) {
                 return "https://twitter.com/intent/tweet?text=" + encodeURIComponent("'" + $.trim(data.quoteText) + "' - " + data.quoteAuthor);
             }
@@ -73,22 +78,27 @@
             function loadQuote() {
                 var urlQuote = "http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=jsonp&jsonp=?";
 
-                $.getJSON(urlQuote, function(data) {
-                    $quote.fadeOut(700, function() {
-                        var self = this;
-                        $text.html(data.quoteText);
-                        if (data.quoteAuthor) {
-                            $author.html(data.quoteAuthor);
-                        } else {
-                            $author.html("Anonymous");
-                        }
-                        var urlTweet = newTweetUrl(data);
-                        $btnTweet.attr("href", urlTweet);
-                        $(self).fadeIn(700);
+                $.getJSON(urlQuote)
+                    .done(function(data) {
+                        $quote.fadeOut(700, function() {
+                            var self = this;
+                            $text.html(data.quoteText);
+                            if (data.quoteAuthor) {
+                                $author.html(data.quoteAuthor);
+                            } else {
+                                $author.html("Anonymous");
+                            }
+                            var urlTweet = newTweetUrl(data);
+                            $btnTweet.attr("href", urlTweet);
+                            $(self).fadeIn(700);
+                        })
+                    })
+                    .fail(function() {
+                        console.log("ERROR: Not Get JSON.");
+                    })
+                    .always(function() {
+                        $btnLoad.blur();
                     });
-                }, function() {
-                    console.log("Get JSON error.");
-                });
             }
         });
     </script>
@@ -102,7 +112,7 @@
     <div class="row">
         <div class="grid-block">
             <div class="expanded button-group">
-                <a id="btnLoad" class="button"><i class="material-icons">repeat_one</i>&nbsp;Load New</a>
+                <a id="btnLoad" class="button" href="#"><i class="material-icons">repeat_one</i>&nbsp;Load New</a>
                 <a id="btnTweet" class="button" target="_blank" href="#"><i class="material-icons">insert_comment</i>&nbsp;Tweet this quote</a>
             </div>
         </div>
@@ -115,7 +125,7 @@
     </div>
     <hr>
     <div class="row footer">
-        <h6 class="medium-6 columns text-left subheader">Project for<a target="_blank" href="https://www.freecodecamp.com/"> Project for Free Code Camp</a></h6>
+        <h6 class="medium-6 columns text-left subheader">Project for<a target="_blank" href="https://www.freecodecamp.com/"> Free Code Camp</a></h6>
         <h6 class="medium-6 columns text-right subheader">2016&nbsp;<i class="material-icons copyicons">copyright</i>&nbsp;<a target="_blank" href="https://www.freecodecamp.com/suomaa" target="_blank">Alex Antomonov</a></h6>
     </div>
     <hr>
