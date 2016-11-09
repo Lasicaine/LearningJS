@@ -11,14 +11,18 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css" rel="stylesheet" type="text/css" />
     <script src="http://cdn.muicss.com/mui-latest/js/mui.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/skycons/1396634940/skycons.min.js"></script>
     <script>
         $(function() {
 
             MyWeather();
 
+            function getLocation() {
+                return $.getJSON("https://ipinfo.io/json");
+            }
+
             function MyWeather() {
-                var urlLocationService = "https://ipinfo.io/json";
-                $.getJSON(urlLocationService)
+                getLocation()
                     .then(
                         function() {
                             console.log("Yes JSON.");
@@ -26,6 +30,16 @@
                     .fail(function() {
                         console.log("ERROR: Not Get JSON.");
                     });
+            }
+
+            function locationInfo(myLocation) {
+                var location = myLocation.loc.split(",");
+                return {
+                    latitude: location[0],
+                    longitude: location[1],
+                    country: myLocation.country,
+                    city: myLocation.city
+                };
             }
 
         });
@@ -47,14 +61,14 @@
         <div class="mui--appbar-height"></div>
         <br>
         <br>
-        <div class="mui--text-display3">Weather App</div>
+        <div class="mui--text-display3">Local Weather App</div>
         <br>
         <br>
         <button class="mui-btn mui-btn--raised">Get started</button>
     </div>
     <footer>
         <div class="mui-container mui--text-center">
-            Created by <a href="https://www.freecodecamp.com/suomaa">Alex Antomonov </a>
+            Made with ❤ <a href="https://www.freecodecamp.com/suomaa">Alex Antomonov</a> © 2016
         </div>
     </footer>
 </body>
