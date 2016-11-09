@@ -7,9 +7,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="http://cdn.muicss.com/mui-latest/css/mui.min.css" rel="stylesheet" type="text/css" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css" rel="stylesheet" type="text/css" />
     <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css" rel="stylesheet" type="text/css" />
     <script src="http://cdn.muicss.com/mui-latest/js/mui.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+        $(function() {
+
+            MyWeather();
+
+            function MyWeather() {
+                var urlLocationService = "https://ipinfo.io/json";
+                $.getJSON(urlLocationService)
+                    .then(
+                        function() {
+                            console.log("Yes JSON.");
+                        })
+                    .fail(function() {
+                        console.log("ERROR: Not Get JSON.");
+                    });
+            }
+
+        });
+    </script>
 </head>
 
 <body>
