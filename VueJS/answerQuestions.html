@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="./vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.js"></script>
+
+    <div id="watch-example">
+        <p>
+            Задайте вопрос, на который можно ответить "да" или "нет":
+            <input v-model="question">
+        </p>
+        <p>{{ answer }}</p>
+    </div>
+
+    <!-- Поскольку уже существует обширная экосистема ajax-библиотек  -->
+    <!-- и библиотек функций общего назначения, ядро Vue может        -->
+    <!-- оставаться маленьким и не изобретать их заново. Кроме того,  -->
+    <!-- это позволяет вам использовать только знакомые инструменты. -->
+    <script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script>
+    <script>
+        var watchExampleVM = new Vue({
+            el: '#watch-example',
+            data: {
+                question: '',
+                answer: 'Пока вы не зададите вопрос, я не могу ответить!'
+            },
+            watch: {
+                // эта функция запускается при любом изменении вопроса
+                question: function(newQuestion) {
+                    this.answer = 'Ожидаю, когда вы закончите печатать...'
+                    this.getAnswer()
+                }
+            },
+            methods: {
+                // _.debounce — это функция из lodash, позволяющая ограничить
+                // то, насколько часто может выполняться определённая операция.
+                // В данном случае, мы хотим ограничить частоту обращений к yesno.wtf/api,
+                // дожидаясь завершения печати вопроса перед тем как послать ajax-запрос.
+                // Чтобы узнать больше о функции _.debounce (и её родственнице _.throttle),
+                // см. документацию: https://lodash.com/docs#debounce
+                getAnswer: _.debounce(
+                    function() {
+                        if (this.question.indexOf('?') === -1) {
+                            this.answer = 'Вопросы обычно заканчиваются вопросительным знаком. ;-)'
+                            return
+                        }
+                        this.answer = 'Думаю...'
+                        var vm = this
+                        axios.get('https://yesno.wtf/api')
+                            .then(function(response) {
+                                vm.answer = _.capitalize(response.data.answer)
+                            })
+                            .catch(function(error) {
+                                vm.answer = 'Ошибка! Не могу связаться с API. ' + error
+                            })
+                    },
+                    // Это число миллисекунд, которое мы ждем, после того как пользователь прекратил печатать:
+                    500
+                )
+            }
+        })
+    </script>
+</body>
+
+</html>
