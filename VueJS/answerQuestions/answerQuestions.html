@@ -10,9 +10,9 @@
     <script src="./vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.js"></script>
 
-    <div id="watch-example">
+    <div class="wrapper" id="watch-example">
         <p>
-            Задайте вопрос, на который можно ответить "да" или "нет":
+            Задайте вопрос, на который можно ответить "Да" или "Нет":
             <input v-model="question">
         </p>
         <p>{{ answer }}</p>
@@ -34,7 +34,7 @@
             watch: {
                 // эта функция запускается при любом изменении вопроса
                 question: function(newQuestion) {
-                    this.answer = 'Ожидаю, когда вы закончите печатать...'
+                    this.answer = 'Ожидаю, окончания печати...'
                     this.getAnswer()
                 }
             },
