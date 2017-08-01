@@ -12,38 +12,7 @@
     <script src="http://cdn.muicss.com/mui-latest/js/mui.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/skycons/1396634940/skycons.min.js"></script>
-    <script>
-        $(function() {
-
-            MyWeather();
-
-            function getLocation() {
-                return $.getJSON("https://ipinfo.io/json");
-            }
-
-            function MyWeather() {
-                getLocation()
-                    .then(
-                        function() {
-                            console.log("Yes JSON.");
-                        })
-                    .fail(function() {
-                        console.log("ERROR: Not Get JSON.");
-                    });
-            }
-
-            function locationInfo(myLocation) {
-                var location = myLocation.loc.split(",");
-                return {
-                    latitude: location[0],
-                    longitude: location[1],
-                    country: myLocation.country,
-                    city: myLocation.city
-                };
-            }
-
-        });
-    </script>
+    <script src="./js/app.js"></script>
 </head>
 
 <body>
@@ -51,7 +20,8 @@
         <div class="mui-container">
             <table width="100%">
                 <tr class="mui--appbar-height">
-                    <td class="mui--text-title">Weather App</td>
+                    <td class="mui--text-title">Local Weather App</td>
+                    <td class="mui--text-center"><button class="mui-btn mui-btn--raised">Update</button></td>
                     <td class="mui--text-right">Project for <a href="https://www.freecodecamp.com/">Free Code Camp</a></td>
                 </tr>
             </table>
@@ -61,14 +31,20 @@
         <div class="mui--appbar-height"></div>
         <br>
         <br>
-        <div class="mui--text-display3">Local Weather App</div>
+        <div class="mui--text-display3">Currently Weather In</div>
         <br>
-        <br>
-        <button class="mui-btn mui-btn--raised">Get started</button>
+        <h1 id="location" class="text-center"></h1>
+        <h2 id="temperature" class="text-center"></h2>
+        <h2 id="tempDegrees" class="text-center"></h2>
+        <h2 id="description" class="text-center description"></h2>
+
+        <div class="text-center">
+            <canvas id="img_condition" width="128" height="128"></canvas>
+        </div>
     </div>
     <footer>
         <div class="mui-container mui--text-center">
-            Made with ❤ <a href="https://www.freecodecamp.com/suomaa">Alex Antomonov</a> © 2016
+            Made with ❤ <a href="https://www.freecodecamp.com/suomaa">Alex Antomonov</a> © 2017
         </div>
     </footer>
 </body>
