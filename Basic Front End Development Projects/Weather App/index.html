@@ -20,27 +20,37 @@
         <div class="mui-container">
             <table width="100%">
                 <tr class="mui--appbar-height">
-                    <td class="mui--text-title">Local Weather App</td>
-                    <td class="mui--text-center"><button class="mui-btn mui-btn--raised">Update</button></td>
-                    <td class="mui--text-right">Project for <a href="https://www.freecodecamp.com/">Free Code Camp</a></td>
+                    <td class="mui--text-title">
+                        <h2>Local Weather App</h2>
+                        <h6>Project for <a href="https://www.freecodecamp.com/">Free Code Camp</a></h6>
+                    </td>
+                    <td class="mui--text-right">
+                        <button class="mui-btn mui-btn--raised">&#11118;</button>
+                        <div>
+                            <button class="mui-btn mui-btn--accent">&#8451;</button>
+                            <button class="mui-btn mui-btn--raised">&#8457;</button>
+                        </div>
+                    </td>
+
                 </tr>
             </table>
         </div>
     </header>
     <div id="content-wrapper" class="mui--text-center">
-        <div class="mui--appbar-height"></div>
-        <br>
-        <br>
-        <div class="mui--text-display3">Currently Weather In</div>
-        <br>
         <h1 id="location" class="text-center"></h1>
-        <h2 id="temperature" class="text-center"></h2>
-        <h2 id="tempDegrees" class="text-center"></h2>
-        <h2 id="description" class="text-center description"></h2>
-
-        <div class="text-center">
-            <canvas id="img_condition" width="128" height="128"></canvas>
+        <div>
+            <div class="display-inline">
+                <h1 id="temperature" class="text-center display-inline"></h1>
+                <h1 id="tempDegrees" class="text-center display-inline"></h1>
+            </div>
+            <h2 id="description" class="text-left description"></h2>
+            <div class="text-center display-inline">
+                <canvas id="img_condition" width="128" height="128"></canvas>
+            </div>
         </div>
+
+
+
     </div>
     <footer>
         <div class="mui-container mui--text-center">
