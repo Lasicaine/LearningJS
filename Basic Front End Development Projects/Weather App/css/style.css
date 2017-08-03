@@ -51,8 +51,10 @@ header a:hover {
     min-height: 100%;
     /* sticky footer */
     padding-top: 150px;
-    /*margin-bottom: -100px;
-    padding-bottom: 100px;*/
+    margin-bottom: -100px;
+    padding-bottom: 100px;
+    text-align: center;
+    background: #EEEEEE;
 }
 
 
@@ -62,8 +64,8 @@ header a:hover {
 
 footer {
     height: 100px;
-    background-color: #eee;
-    border-top: 1px solid #e0e0e0;
+    background-color: #EEE;
+    border-top: 1px solid #E0E0E0;
     padding-top: 35px;
 }
 
@@ -72,6 +74,38 @@ footer {
 * Other
 */
 
-.display-inline {
+.float-left {
+    float: left;
+}
+
+.margin-img-condition {
+    margin: 10px 10px 20px 20px;
+}
+
+.temperature-block {
+    height: 60%;
+    white-space: nowrap;
+}
+
+.text-condition {
+    height: 40%;
+}
+
+.description {
+    height: 200px;
+    padding: 0px 20px 0px 20px;
+}
+
+.wrapper {
     display: inline-block;
+    text-align: left;
+    background: #FAFAFA;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(122, 122, 122, 0.5);
+}
+
+.wrapper:after {
+    content: "";
+    display: block;
+    clear: both;
 }

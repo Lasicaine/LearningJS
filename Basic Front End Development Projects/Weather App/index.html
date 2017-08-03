@@ -36,21 +36,22 @@
             </table>
         </div>
     </header>
-    <div id="content-wrapper" class="mui--text-center">
-        <h1 id="location" class="text-center"></h1>
-        <div>
-            <div class="display-inline">
-                <h1 id="temperature" class="text-center display-inline"></h1>
-                <h1 id="tempDegrees" class="text-center display-inline"></h1>
+    <div id="content-wrapper">
+        <div class="wrapper">
+            <h1 id="location" class="mui--text-center"></h1>
+            <div class="margin-img-condition float-left">
+                <canvas id="img_condition" width="200" height="200"></canvas>
             </div>
-            <h2 id="description" class="text-left description"></h2>
-            <div class="text-center display-inline">
-                <canvas id="img_condition" width="128" height="128"></canvas>
+            <div class="description float-left">
+                <div class="temperature-block mui--text-dark-secondary mui--text-display4">
+                    <span id="temperature"></span>
+                    <span id="tempDegrees"></span>
+                </div>
+                <div class="text-condition mui--text-dark-secondary mui--text-display1">
+                    <span id="description"></span>
+                </div>
             </div>
         </div>
-
-
-
     </div>
     <footer>
         <div class="mui-container mui--text-center">
