@@ -85,6 +85,7 @@ footer {
 .temperature-block {
     height: 60%;
     white-space: nowrap;
+    font-size: 0;
 }
 
 .text-condition {

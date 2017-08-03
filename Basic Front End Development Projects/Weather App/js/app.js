@@ -71,8 +71,7 @@
     }
 
     function updateTemperature() {
-        $("#temperature").text(Math.round(localWeather.temp));
-        $("#tempDegrees").html("&#8451;");
+        $("#temperature").html(Math.round(localWeather.temp) + "&#176;" + "C");
     }
 
 })();
