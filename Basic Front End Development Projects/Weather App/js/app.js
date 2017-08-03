@@ -1,9 +1,8 @@
-(function() {
+$(function() {
 
     var localWeather = {};
 
     MyWeather();
-
 
     function MyWeather() {
         getLocation()
@@ -14,7 +13,6 @@
                 console.log("ERROR: Not Get JSON.");
             });
     }
-
 
     function getLocation() {
         return $.getJSON("https://ipinfo.io/json");
@@ -74,4 +72,8 @@
         $("#temperature").html(Math.round(localWeather.temp) + "&#176;" + "C");
     }
 
-})();
+    $("#btnUpdateWeather").click(function() {
+        MyWeather();
+    });
+
+});
