@@ -76,9 +76,13 @@ $(function() {
     }
 
     function printTemperature() {
+        $temperature.hide();
         if (unitTemperature === "celsius") {
             $temperature.html(Math.round(localWeather.temp) + "&#176;" + "C");
-        } else { $temperature.html(Math.round(localWeather.temp) + "&#176;" + "F"); }
+        } else {
+            $temperature.html(Math.round(localWeather.temp) + "&#176;" + "F");
+        }
+        $temperature.fadeIn("slow");
 
     }
 
