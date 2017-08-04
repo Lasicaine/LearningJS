@@ -1,6 +1,10 @@
 $(function() {
 
     var localWeather = {};
+    var $btnDegreeCelsius = $("#btnDegreeCelsius");
+    var $btnDegreeFahrenheit = $("#btnDegreeFahrenheit");
+    var $temperature = $("#temperature");
+    var unitTemperature;
 
     MyWeather();
 
@@ -10,6 +14,7 @@ $(function() {
             .then(getWeatherInfo)
             .then(printWeatherInfo)
             .fail(function() {
+                unitTemperature = undefined;
                 console.log("ERROR: Not Get JSON.");
             });
     }
@@ -57,7 +62,9 @@ $(function() {
         skycons.play();
 
         $("#description").text(weather.description);
-        updateTemperature();
+        unitTemperature = "celsius";
+        printTemperature();
+        setCelsiusDegreeButton();
     }
 
     function getWeather(weatherInfo) {
@@ -68,12 +75,50 @@ $(function() {
         };
     }
 
-    function updateTemperature() {
-        $("#temperature").html(Math.round(localWeather.temp) + "&#176;" + "C");
+    function printTemperature() {
+        if (unitTemperature === "celsius") {
+            $temperature.html(Math.round(localWeather.temp) + "&#176;" + "C");
+        } else { $temperature.html(Math.round(localWeather.temp) + "&#176;" + "F"); }
+
     }
+
+    $btnDegreeCelsius.click(function() {
+        if (unitTemperature === "fahrenheit") {
+            localWeather.temp = convertFahrenheitToCelsius(localWeather.temp);
+            unitTemperature = "celsius";
+            printTemperature();
+            setCelsiusDegreeButton();
+        }
+    });
+
+    $btnDegreeFahrenheit.click(function() {
+        if (unitTemperature === "celsius") {
+            localWeather.temp = convertCelsiusToFahrenheit(localWeather.temp);
+            unitTemperature = "fahrenheit";
+            printTemperature();
+            setFahrenheitDegreeButton();
+        }
+    });
 
     $("#btnUpdateWeather").click(function() {
         MyWeather();
     });
 
+    function setCelsiusDegreeButton() {
+        $btnDegreeCelsius.removeClass("mui-btn--raised").addClass("mui-btn--accent");
+        $btnDegreeFahrenheit.removeClass("mui-btn--accent").addClass("mui-btn--raised");
+    }
+
+    function setFahrenheitDegreeButton() {
+        $btnDegreeFahrenheit.removeClass("mui-btn--raised").addClass("mui-btn--accent");
+        $btnDegreeCelsius.removeClass("mui-btn--accent").addClass("mui-btn--raised");
+    }
+
+    function convertFahrenheitToCelsius(value) {
+        return (value - 32) / 1.8;
+    }
+
+    function convertCelsiusToFahrenheit(value) {
+        return value * 1.8 + 32;
+    }
 });
