@@ -4,6 +4,9 @@ $(function() {
     var $btnDegreeCelsius = $("#btnDegreeCelsius");
     var $btnDegreeFahrenheit = $("#btnDegreeFahrenheit");
     var $temperature = $("#temperature");
+    var $location = $("#location");
+    var $img_condition = $("#img_condition");
+    var $description = $("#description");
     var unitTemperature;
 
     MyWeather();
@@ -36,7 +39,9 @@ $(function() {
 
     function printLocation(locationInfo) {
         var location = myLocation(locationInfo);
-        $("#location").text(location.city + ", " + location.country);
+        $location.hide();
+        $location.text(location.city + ", " + location.country);
+        $location.fadeIn("slow");
         return location;
     }
 
@@ -58,13 +63,19 @@ $(function() {
         var skycons = new Skycons({
             "color": "black"
         });
+        $description.hide();
+
+        $img_condition.hide();
         skycons.add(document.getElementById("img_condition"), weather.icon);
         skycons.play();
+        $img_condition.fadeIn("slow");
 
-        $("#description").text(weather.description);
+        $description.text(weather.description);
         unitTemperature = "celsius";
         printTemperature();
+        $img_condition.fadeIn("slow");
         setCelsiusDegreeButton();
+        $description.fadeIn("slow");
     }
 
     function getWeather(weatherInfo) {
@@ -83,7 +94,6 @@ $(function() {
             $temperature.html(Math.round(localWeather.temp) + "&#176;" + "F");
         }
         $temperature.fadeIn("slow");
-
     }
 
     $btnDegreeCelsius.click(function() {
