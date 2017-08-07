@@ -64,28 +64,24 @@ button {
 
 #content-wrapper {
     flex: 1 0 auto;
+    padding-top: 150px;
     text-align: center;
     background: #EEEEEE;
-    padding-top: 150px;
 }
 
-
-/**
- * Footer CSS
- */
-
-footer {
-    flex: 0 0 auto;
-    height: 50px;
-    background-color: #EEE;
-    border-top: 1px solid #E0E0E0;
-    padding-top: 30px;
+#weather-wrapper {
+    display: inline-block;
+    text-align: left;
+    background: #FAFAFA;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(122, 122, 122, 0.5);
 }
 
-
-/**
-* Other
-*/
+#weather-wrapper:after {
+    content: "";
+    display: block;
+    clear: both;
+}
 
 .float-left {
     float: left;
@@ -110,16 +106,15 @@ footer {
     padding: 0px 20px 0px 20px;
 }
 
-#weather-wrapper {
-    display: inline-block;
-    text-align: left;
-    background: #FAFAFA;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(122, 122, 122, 0.5);
-}
 
-#weather-wrapper:after {
-    content: "";
-    display: block;
-    clear: both;
+/**
+ * Footer CSS
+ */
+
+footer {
+    flex: 0 0 auto;
+    padding-top: 30px;
+    height: 50px;
+    background-color: #EEE;
+    border-top: 1px solid #E0E0E0;
 }
