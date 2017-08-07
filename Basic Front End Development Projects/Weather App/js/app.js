@@ -48,7 +48,6 @@ $(function() {
 
     function getWeatherInfo(location) {
         var getWeatherUrl = "https://api.darksky.net/forecast/f613e5eb52cc7af771ea867f0182bc99/" + location.latitude + "," + location.longitude + "?units=si";
-        console.log(getWeatherUrl);
         return $.ajax({
             url: getWeatherUrl,
             dataType: "jsonp"
