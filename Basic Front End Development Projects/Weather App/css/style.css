@@ -2,6 +2,11 @@
  * Body CSS
  */
 
+* {
+    margin: 0;
+    padding: 0;
+}
+
 html,
 body {
     height: 100%;
@@ -42,19 +47,26 @@ header a:hover {
     background-color: #1A237E;
 }
 
+button {
+    width: 70px;
+}
+
 
 /**
  * Content CSS
  */
 
+#wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
 #content-wrapper {
-    min-height: 100%;
-    /* sticky footer */
-    padding-top: 150px;
-    margin-bottom: -100px;
-    padding-bottom: 100px;
+    flex: 1 0 auto;
     text-align: center;
     background: #EEEEEE;
+    padding-top: 150px;
 }
 
 
@@ -63,10 +75,11 @@ header a:hover {
  */
 
 footer {
-    height: 100px;
+    flex: 0 0 auto;
+    height: 50px;
     background-color: #EEE;
     border-top: 1px solid #E0E0E0;
-    padding-top: 35px;
+    padding-top: 30px;
 }
 
 
@@ -97,7 +110,7 @@ footer {
     padding: 0px 20px 0px 20px;
 }
 
-.wrapper {
+#weather-wrapper {
     display: inline-block;
     text-align: left;
     background: #FAFAFA;
@@ -105,7 +118,7 @@ footer {
     box-shadow: 0 0 5px rgba(122, 122, 122, 0.5);
 }
 
-.wrapper:after {
+#weather-wrapper:after {
     content: "";
     display: block;
     clear: both;
